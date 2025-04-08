@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildScan AI | 3D Point Cloud-Based Defect Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Build<span>Scan</span> AI</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Projects</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <img src="/api/placeholder/30/30" alt="User">
+            <span>John Doe</span>
+        </div>
+    </header>
+    
+    <main>
+        <div class="sidebar">
+            <h3>Projects</h3>
+            <div class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item active">
+                <i class="fas fa-cube"></i>
+                <span>3D Viewer</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Defect Analysis</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-history"></i>
+                <span>Scan History</span>
+            </div>
+            <h3>Tools</h3>
+            <div class="menu-item">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Import Data</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Processing Settings</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-file-export"></i>
+                <span>Export</span>
+            </div>
+            <h3>Management</h3>
+            <div class="menu-item">
+                <i class="fas fa-user-friends"></i>
+                <span>Team Access</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-archive"></i>
+                <span>Archives</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="toolbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search defects...">
+                </div>
+            <div class="btn-group">
+                <button class="btn" id="preprocess-btn">
+                    <i class="fas fa-cogs"></i>
+                    Preprocess Data
+                </button>
+                <button class="btn" id="report-btn">
+                    <i class="fas fa-file-alt"></i>
+                    Generate Report
+                </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i>
+                        Export Report
+                    </button>
+                    <button class="btn" id="scan-btn">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        Upload New Scan
+                    </button>
+                </div>
+            </div>
+            
+            <div class="viewport-container">
+                <div class="viewport">
+                    <!-- 3D Viewer Canvas Placeholder -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                        <i class="fas fa-cube" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
+                        <p>3D Point Cloud Viewer</p>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Upload a scan to view building model</p>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="control-btn">
+                            <i class="fas fa-arrows-alt"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-home"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-ruler-combined"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="layers-control">
+                        <div class="layers-header">
+                            <span>Layers</span>
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="layer-item">
+                            <div class="color-indicator" style="background-color: #bdc3c7;"></div>
+                            <div class="layer-name">Building Structure</div>
+                            <input type="checkbox" class="checkbox" checked>
+                        </div>
+                        <div class="layer-item">
+                            <div class="color-indicator" style="background-color: #e74c3c;"></div>
+                            <div class="layer-name">Cracks</div>
+                            <input type="checkbox" class="checkbox" checked>
+                        </div>
+                        <div class="layer-item">
+                            <div class="color-indicator" style="background-color: #f39c12;"></div>
+                            <div class="layer-name">Surface Deterioration</div>
+                            <input type="checkbox" class="checkbox" checked>
+                        </div>
+                        <div class="layer-item">
+                            <div class="color-indicator" style="background-color: #3498db;"></div>
+                            <div class="layer-name">Water Damage</div>
+                            <input type="checkbox" class="checkbox" checked>
+                        </div>
+                        <div class="layer-item">
+                            <div class="color-indicator" style="background-color: #9b59b6;"></div>
+                            <div class="layer-name">Structural Deformation</div>
+                            <input type="checkbox" class="checkbox" checked>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>Detected Defects</span>
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    
+                    <div class="tabs">
+                        <div class="tab active">Defects</div>
+                        <div class="tab">Analysis</div>
+                        <div class="tab">History</div>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <div class="defect-item selected">
+                                <div class="defect-header">
+                                    <span>Concrete Crack</span>
+                                    <span class="tag tag-high">High</span>
+                                </div>
+                                <div class="defect-location">3rd Floor, East Wall</div>
+                                <div class="defect-dimensions">2.3mm width × 45cm length</div>
+                            </div>
+                            
+                            <div class="defect-item">
+                                <div class="defect-header">
+                                    <span>Surface Spalling</span>
+                                    <span class="tag tag-medium">Medium</span>
+                                </div>
+                                <div class="defect-location">2nd Floor, Column B4</div>
+                                <div class="defect-dimensions">15cm × 23cm area</div>
+                            </div>
+                            
+                            <div class="defect-item">
+                                <div class="defect-header">
+                                    <span>Water Damage</span>
+                                    <span class="tag tag-medium">Medium</span>
+                                </div>
+                                <div class="defect-location">Basement, North Wall</div>
+                                <div class="defect-dimensions">1.2m² affected area</div>
+                            </div>
+                            
+                            <div class="defect-item">
+                                <div class="defect-header">
+                                    <span>Surface Crack</span>
+                                    <span class="tag tag-low">Low</span>
+                                </div>
+                                <div class="defect-location">1st Floor, West Wall</div>
+                                <div class="defect-dimensions">0.8mm width × 20cm length</div>
+                            </div>
+                            
+                            <div class="defect-item">
+                                <div class="defect-header">
+                                    <span>Structural Deformation</span>
+                                    <span class="tag tag-high">High</span>
+                                </div>
+                                <div class="defect-location">Roof Truss, Section C</div>
+                                <div class="defect-dimensions">2.5cm displacement</div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane">
+                            <div class="summary-stats">
+                                <div class="stat-card">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Total Defects</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">3</div>
+                                    <div class="stat-label">High Priority</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">78%</div>
+                                    <div class="stat-label">Structural Health</div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 78%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="section-title">Defect Distribution</div>
+                            <div class="chart-container">
+                                <!-- Chart placeholder -->
+                                <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: #95a5a6;">
+                                    <div style="text-align: center;">
+                                        <i class="fas fa-chart-pie" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                                        <p>Defect distribution chart</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="section-title">Detection Confidence</div>
+                            <div class="chart-container">
+                                <!-- Chart placeholder -->
+                                <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: #95a5a6;">
+                                    <div style="text-align: center;">
+                                        <i class="fas fa-chart-bar" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                                        <p>AI confidence levels by defect type</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Scan Uploaded</div>
+                                        <p>Initial point cloud data uploaded for processing</p>
+                                        <div class="timeline-time">2 days ago</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Processing Complete</div>
+                                        <p>Point cloud preprocessing and registration complete</p>
+                                        <div class="timeline-time">2 days ago</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">AI Analysis Complete</div>
+                                        <p>Defect detection and classification performed</p>
+                                        <div class="timeline-time">1 day ago</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Expert Review</div>
+                                        <p>Engineer John Smith reviewed and validated findings</p>
+                                        <div class="timeline-time">12 hours ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <span>Project: Office Building 123 • Last scan: March 1, 2025</span>
+                <span>12 defects detected • 3 high priority • 95% confidence</span>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Upload Modal -->
+    <div class="modal" id="upload-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Upload New Scan</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Scan Name</label>
+                    <input type="text" class="form-input" placeholder="e.g., Office Building - March 2025">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Building Section</label>
+                    <select class="form-select">
+                        <option value="section1">Section 1</option>
+                        <option value="section2">Section 2</option>
+                        <option value="section3">Section 3</option>
+                    </select>
+                </div>
+                <div class="file-upload">
+                    <i class="fas fa-upload"></i>
+                    <p>Drag and drop your scan file here or click to upload</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="upload-btn">Upload</button>
+                <button class="btn btn-secondary close-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

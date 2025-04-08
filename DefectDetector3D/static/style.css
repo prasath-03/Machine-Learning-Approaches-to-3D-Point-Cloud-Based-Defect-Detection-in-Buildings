@@ -1,0 +1,175 @@
+/* Main Styles for BuildScan AI */
+
+/* Cards */
+.card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature Cards */
+.feature-card {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #3498db;
+}
+
+.feature-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.feature-description {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Buttons */
+.stButton button {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.stButton button:hover {
+    transform: scale(1.05);
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 40px;
+    border-radius: 4px 4px 0 0;
+    padding: 0 16px;
+    font-weight: 500;
+}
+
+/* Headers */
+h1, h2, h3, h4 {
+    color: #2c3e50;
+}
+
+/* Data frames */
+.dataframe {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Expanders */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Metrics */
+[data-testid="stMetricValue"] {
+    font-weight: 700;
+    color: #3498db;
+}
+
+/* Sidebar */
+.sidebar .sidebar-content {
+    background-color: #f8f9fa;
+}
+
+/* Progress bars */
+.stProgress > div > div > div {
+    background-color: #3498db;
+}
+
+/* Custom classes for action buttons */
+.action-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #2980b9;
+}
+
+/* Dashboard specific styles */
+.dashboard-stat {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.dashboard-label {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Form elements */
+input, select, textarea {
+    border-radius: 8px !important;
+}
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-green {
+    background-color: #2ecc71;
+}
+
+.status-yellow {
+    background-color: #f39c12;
+}
+
+.status-red {
+    background-color: #e74c3c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feature-card {
+        height: auto;
+        padding: 15px;
+    }
+    
+    .feature-icon {
+        font-size: 36px;
+    }
+    
+    .feature-title {
+        font-size: 16px;
+    }
+    
+    .feature-description {
+        font-size: 12px;
+    }
+}
